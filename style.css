@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body{
+    font-family: 'Anton', sans-serif;
+
+}
+p{
+    color: #fff;
+}
+#app .container h3{
+    text-align: center;
+    font-size: 70px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding: 100px 0px;
+}
+.api{
+    margin-top: 150px;
+    background-color: black;
+}
+
+.cardboard p{
+    color: #fff;
+}
