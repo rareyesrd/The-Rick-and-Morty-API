@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -13,31 +13,106 @@
 </head>
 
 <body>
-
-
     <div id="app">
         <div class="container">
             <h3>The Rick and Morty API </h3>
         </div>
-        
-        <div class="api">
+
+        <section class="search">
+            <input v-model="search" placeholder="Buscar personaje">
+        </section>
+
+        <section class="results">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="cardboard">
-                            <div class="image">
-                               
-                            </div>
-                            <div class="info">
-                                <p>{{ info }}</p> 
+                    <div class="col-12" v-for="caracter in info" :key="caracter.id">
+                        <div v-if="caracter.name == search">
+                            <div class="cardboard">
+                                <div class="image">
+                                    <img :src="caracter.image" alt="caracter.image">
+                                </div>
+                                <div class="info">
+                                    <div class="perfil">
+                                        <h4>{{ caracter.name }}</h4>
+                                        <h6>
+                                            <span v-if="caracter.status == 'Alive'">
+                                                <span style="color: green">•</span>
+                                            </span>
+                                            <span v-else>
+                                                <span style="color: red">•</span>
+                                            </span>
+                                            {{ caracter.status }} - {{ caracter.species 
+                                        }}
+                                        </h6>
+                                    </div>
+
+                                    <div class="location">
+                                        <p>Last known location:
+                                        </p>
+                                        <h6>{{ caracter.location.name }}</h6>
+                                    </div>
+
+                                    <div class="firstSeen">
+                                        <p>First seen in: </p>
+                                        <h6 v-for="episode in episodes" :key="episode.id">
+                                            <span v-if="caracter.id == episode.id">
+                                                {{ episode.name }}
+                                            </span>
+                                    </div>
+                                    </h6>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="api">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6" v-for="caracter in info" :key="caracter.id">
+                        <div class="cardboard">
+                            <div class="image">
+                                <img :src="caracter.image" alt="caracter.image">
+                            </div>
+                            <div class="info">
+                                <div class="perfil">
+                                    <h4>{{ caracter.name }}</h4>
+                                    <h6>
+                                        <span v-if="caracter.status == 'Alive'">
+                                            <span style="color: green">•</span>
+                                        </span>
+                                        <span v-else>
+                                            <span style="color: red">•</span>
+                                        </span>
+                                        {{ caracter.status }} - {{ caracter.species 
+                                        }}
+                                    </h6>
+                                </div>
+
+                                <div class="location">
+                                    <p>Last known location:
+                                    </p>
+                                    <h6>{{ caracter.location.name }}</h6>
+                                </div>
+
+                                <div class="firstSeen">
+                                    <p>First seen in: </p>
+                                    <h6 v-for="episode in episodes" :key="episode.id">
+                                        <span v-if="caracter.id == episode.id">
+                                            {{ episode.name }}
+                                        </span>
+                                </div>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
